@@ -375,11 +375,9 @@ function createToolUnload(settings) {
   const zone1 = settings.zone1;
   return `
     G53 G0 Z${settings.zEngagement + settings.zSpinOff}
-    G65P6
     M4 S${settings.unloadRpm}
     G53 G1 Z${settings.zEngagement} F${settings.engageFeedrate}
     G53 G1 Z${settings.zEngagement + settings.zRetreat} F${settings.engageFeedrate}
-    G65P6
     M5
     G53 G0 Z${zone1}
     G4 P0.2
@@ -395,7 +393,6 @@ function createToolLoad(settings, tool) {
 
   return `
     G53 G0 Z${settings.zEngagement + settings.zSpinOff}
-    G65P6
     M3 S${settings.loadRpm}
     G53 G1 Z${settings.zEngagement} F${settings.engageFeedrate}
     G53 G1 Z${settings.zEngagement + settings.zRetreat} F${settings.engageFeedrate}
@@ -403,7 +400,6 @@ function createToolLoad(settings, tool) {
     G53 G1 Z${settings.zEngagement + settings.zRetreat} F${settings.engageFeedrate}
     G53 G1 Z${settings.zEngagement} F${settings.engageFeedrate}
     G53 G1 Z${settings.zEngagement + settings.zRetreat} F${settings.engageFeedrate}
-    G65P6
     M5
     G53 G0 Z${zone1}
     G4 P0.2
