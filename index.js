@@ -160,11 +160,10 @@ function createToolLengthSetProgram(settings) {
   const tlsRoutine = createToolLengthSetRoutine(settings).join('\n');
   const gcode = `
     (Start of Tool Length Setter)
-    #<return_units> = [20 + #<_metric>]
     G21
     ${tlsRoutine}
     G53 G0 Z${settings.zSafe}
-    G[#<return_units>]
+    G21
     (End of Tool Length Setter)
     (MSG, TOOL CHANGE COMPLETE)
   `.trim();
@@ -488,14 +487,13 @@ function buildToolChangeProgram(settings, currentTool, toolNumber) {
   // Assemble complete program
   const gcode = `
     (Start of RapidChangeATC Plugin Sequence)
-    #<return_units> = [20 + #<_metric>]
     G21
     M5
     ${spindleDelaySection}
     ${unloadSection}
     ${loadSection}
     G53 G0 Z${settings.zSafe}
-    G[#<return_units>]
+    G21
     (End of RapidChangeATC Plugin Sequence)
     (MSG, TOOL CHANGE COMPLETE: T${toolNumber})
   `.trim();
