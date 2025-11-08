@@ -48,7 +48,7 @@ const buildInitialConfig = (raw = {}) => ({
   pocket1: sanitizeCoords(raw.pocket1),
   toolSetter: sanitizeCoords(raw.toolSetter),
   manualTool: sanitizeCoords(raw.manualTool),
-  pocketDistance: toFiniteNumber(raw.pocketDistance, 45),
+  pocketDistance: toFiniteNumber(raw.pocketDistance, 32),
 
   // Z-axis Settings
   zEngagement: toFiniteNumber(raw.zEngagement, -50),
